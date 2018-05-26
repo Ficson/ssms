@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyu.mesmonkey.dao.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.jyu.mesmonkey.model.User" >
+        <constructor >
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="apikey" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="status" jdbcType="TINYINT" javaType="java.lang.Integer" />
+            <arg column="balance" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+            <arg column="updateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, apikey, phone, password, status, balance, createTime, updateTime
+    </sql>
+
+    <!--根据id查找用户-->
+    <select id="findUserById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from mes_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!--根据手机查找用户-->
+    <select id="findUserByPhone" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from mes_user
+        where phone = #{phone}
+    </select>
+
+    <!--根据id删除用户-->
+    <delete id="deleteUserById" parameterType="java.lang.Integer" >
+        delete from mes_user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--添加用户-->
+    <insert id="insertUser" parameterType="com.jyu.mesmonkey.model.User" >
+        insert into mes_user (id, apikey, phone,
+        password, status, balance,
+        createTime, updateTime)
+        values (#{id,jdbcType=INTEGER}, #{apikey,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{balance,jdbcType=INTEGER},
+        now(), now())
+    </insert>
+
+
+    <insert id="insertSelective" parameterType="com.jyu.mesmonkey.model.User" >
+        insert into mes_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="apikey != null" >
+                apikey,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="balance != null" >
+                balance,
+            </if>
+            <if test="createtime != null" >
+                createTime,
+            </if>
+            <if test="updatetime != null" >
+                updateTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="apikey != null" >
+                #{apikey,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="balance != null" >
+                #{balance,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null" >
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null" >
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jyu.mesmonkey.model.User" >
+        update mes_user
+        <set >
+            <if test="apikey != null" >
+                apikey = #{apikey,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="balance != null" >
+                balance = #{balance,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null" >
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null" >
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--更新用户基本信息-->
+    <update id="updateUserById" parameterType="com.jyu.mesmonkey.model.User" >
+        update mes_user
+        set apikey = #{apikey,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
+        status = #{status,jdbcType=TINYINT},
+        balance = #{balance,jdbcType=INTEGER},
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+        updateTime = #{updatetime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--用户登录-->
+    <select id = "findUserByPhoneAndPwd" resultMap="BaseResultMap" parameterType="com.jyu.mesmonkey.model.User">
+        select
+        <include refid="Base_Column_List" />
+        from mes_user
+        where phone = #{phone} and password = #{password}
+    </select>
+
+
+</mapper>
+
+
+
+
