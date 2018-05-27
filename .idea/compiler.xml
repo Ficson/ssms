@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ssms-common" />
+        <module name="ssms-manager-dao" />
+        <module name="ssms-manager-interface" />
+        <module name="ssms-manager-pojo" />
+        <module name="ssms-manager-service" />
+        <module name="ssms-manager-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ssms-common" target="1.5" />
+      <module name="ssms-manager" target="1.5" />
+      <module name="ssms-manager-dao" target="1.5" />
+      <module name="ssms-manager-interface" target="1.5" />
+      <module name="ssms-manager-pojo" target="1.5" />
+      <module name="ssms-manager-service" target="1.8" />
+      <module name="ssms-manager-web" target="1.8" />
+      <module name="ssms-parent" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -12,7 +12,7 @@ public class ResultUtil<T> {
     private Result<T> result;
 
     public ResultUtil(){
-        result=new Result<>();
+        result=new Result<T>();
         result.setSuccess(true);
         result.setMessage("success");
         result.setCode(200);

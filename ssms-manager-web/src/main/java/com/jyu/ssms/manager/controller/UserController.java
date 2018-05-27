@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
     //到注册界面
     @RequestMapping(value = "/toRegister", method = RequestMethod.GET)
-    @ResponseBody
+    //@ResponseBody
     public String toRegister() {
 
         // TODO
@@ -36,7 +37,7 @@ public class UserController {
 
     //到用户登录界面
     @RequestMapping(value = "/toLogin",method = RequestMethod.GET)
-    @ResponseBody
+    //@ResponseBody
     public String toLogin(){
         //TODO
         return "/redirect:/user/login";

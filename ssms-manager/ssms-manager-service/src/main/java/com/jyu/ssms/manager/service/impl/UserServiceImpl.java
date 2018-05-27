@@ -10,7 +10,7 @@ import org.springframework.util.DigestUtils;
 
 import java.util.Date;
 
-@Service("UserService")
+@Service
 public class UserServiceImpl implements UserService {
 
     /**

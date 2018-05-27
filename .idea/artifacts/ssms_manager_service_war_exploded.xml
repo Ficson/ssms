@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ssms-manager-service:war exploded">
+    <output-path>$PROJECT_DIR$/ssms-manager/ssms-manager-service/target/ssms-manager-service</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ssms-manager-service" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/ssms-manager/ssms-manager-service/target/ssms-manager-service/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="ssms-manager-service/web/Web" />
+    </root>
+  </artifact>
+</component>
